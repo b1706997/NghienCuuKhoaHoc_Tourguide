@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// add input change handle to a form
 const FormHOC = state => submit => WrappedForm => {
     return class HOC extends Component {
         constructor(props) {

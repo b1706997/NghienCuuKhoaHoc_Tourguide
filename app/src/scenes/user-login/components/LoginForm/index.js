@@ -29,7 +29,7 @@ class LoginForm extends Component {
         //     }
         // }
         // unameChange=(text) =>
-        // {
+        // { 
         //     this.setState({username:text})
         //     // this.setState({error:{...this.state.error,username:validate({username:'username'},this.state.username)}});
         // }
