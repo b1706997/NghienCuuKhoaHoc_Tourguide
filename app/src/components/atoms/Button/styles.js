@@ -4,8 +4,8 @@ import { StyleSheet, Text, View } from "react-native";
 const style = StyleSheet.create({
     // ButtonType
     button: {
-        backgroundColor:styles.Colors.PRIMARY
-        ,fontSize:styles.Typography.FONT_SIZE_16,
+        backgroundColor:styles.Colors.PRIMARY,
+        fontSize:styles.Typography.FONT_SIZE_16,
         width:300,
         borderWidth:1,
         borderColor:'red'

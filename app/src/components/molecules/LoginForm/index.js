@@ -11,9 +11,7 @@ const state = {
     password:''
 }
 const prop = {
-    login:propTypes.func.isRequired,
-    
-
+    login:propTypes.func.isRequired
 }
 class LoginForm extends Component {
     constructor (props) {
