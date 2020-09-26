@@ -6,7 +6,7 @@ import propTypes from 'prop-types';
 class CustomText extends Component {
     render() {
         return(
-            <Text style={styles[this.props.type]}>
+            <Text style={this.props.style,styles[this.props.type]}>
                 {this.props.content}
             </Text>
         );
@@ -14,17 +14,18 @@ class CustomText extends Component {
 }
 
 const textType = {
-    HEADING:'heading',
+    HEADER:'header',
     PARAGRAPH:'paragraph',
     LABEL:'label',
     ERROR:'error'
 }
 CustomText.propTypes = {
     content:propTypes.string.isRequired,
-    type:propTypes.oneOf(Object.keys(textType)),
+    type:propTypes.oneOf(Object.values(textType)),
+    style:propTypes.object
 }
 CustomText.defaultProps = {
-    type:'LABEL'
+    type:textType.LABEL
 }
 
 export default CustomText;

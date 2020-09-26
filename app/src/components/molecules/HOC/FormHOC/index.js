@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // add input change handle to a form
-const FormHOC = state => WrappedForm => {
+const FormHOC = state => submitFunction => WrappedForm => {
     return class HOC extends Component {
         constructor(props) {
             super(props)
@@ -10,10 +10,9 @@ const FormHOC = state => WrappedForm => {
         }
         handleInputChange = (type,value) => {
             this.setState({[type]:value})
-            // console.log(type+" "+value)
         }
         handleFormSubmit = () => {
-
+            submitFunction()
         }
         render() {
             return(

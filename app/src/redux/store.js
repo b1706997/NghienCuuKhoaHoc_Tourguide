@@ -1,8 +1,9 @@
 import {configureStore,combineReducers} from '@reduxjs/toolkit';
-import authenSlice from './features/user/authen/index.js';
-
+import authenSlice from './user/authen/index.js';
+// import navigation from './shared/navigation'
 const rootReducer = combineReducers({
-    authen:authenSlice
+    authen:authenSlice,
+    // navigation:navigation
 })
 export default configureStore ({
     reducer:rootReducer

@@ -1,9 +1,12 @@
 import React , {Component} from 'react';
 import {SafeAreaView, Text, TouchableHighlight} from 'react-native';
 import LoginForm from '_molecules/LoginForm'
+import AsyncStorage from '@react-native-community/async-storage';
+
 class LoginScreen extends Component {
   constructor(props) {
     super(props)
+    AsyncStorage.getItem('@username') && this.props.navigation.navigate('Home')
   }
   navigation = this.props.navigation
   render() {

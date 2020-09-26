@@ -33,7 +33,6 @@ class Input extends Component {
         if(this.state.error)
             this.validate()
         
-        console.log(this.state.value)
         this.props.onChange(this.props.type,text)
     }
 
@@ -54,7 +53,7 @@ class Input extends Component {
     render() {
         return(
             <View>
-                <CustomText type='LABEL' content={this.state.label}/>
+                <CustomText type='label' content={this.state.label}/>
                 <TextInput 
                     style={{height: 40, borderColor: 'gray', borderWidth: 1}}
                     placeholder={this.state.placeholder}

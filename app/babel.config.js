@@ -17,7 +17,8 @@ module.exports = function(api) {
           "_scenes": "./src/scenes",
           "_services": "./src/services",
           "_styles": "./src/styles",
-          "_utils": "./src/utils"
+          "_utils": "./src/utils",
+          "_redux":"./src/redux"
         }
       }
     ]
