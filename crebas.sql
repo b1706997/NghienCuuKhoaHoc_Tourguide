@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     10/2/2020 3:48:44 PM                         */
+/* Created on:     10/7/2020 4:28:14 PM                         */
 /*==============================================================*/
 
 
@@ -236,17 +236,17 @@ create table NOTIFICATIONS
 /*==============================================================*/
 create table POST
 (
-   USE_UNAME            varchar(50) not null,
    POST_ID              int not null,
    UNAME                varchar(50) not null,
    TOURPLAN_ID          int not null,
+   USE_UNAME            varchar(50) not null,
    POST_MAXPRICE        int,
    POST_MAXDURATION     int,
    POST_DONE            bool not null,
    POST_STARTDATE       date,
    POST_CREATEDTIME     datetime not null,
    POST_STAYING_TIME    int,
-   primary key (USE_UNAME, POST_ID)
+   primary key (POST_ID)
 );
 
 /*==============================================================*/
@@ -278,7 +278,6 @@ create table TOUR
 (
    TOUR_ID              int not null,
    STAGE                varchar(20) not null,
-   CHOOSE_ID            int not null,
    CONFIRM_ID           int not null,
    TOUR_CREATEDTIME     datetime not null,
    USERTOUR             bool not null,
@@ -290,11 +289,10 @@ create table TOUR
 /*==============================================================*/
 create table TOURGUIDESELFTOUR_PIC
 (
-   TOU_UNAME            varchar(50) not null,
    TOURAD_ID            int not null,
    TOURGUIDETOURPIC_ID  int not null,
    TOURGUIDETOURPIC_PATH varchar(50) not null,
-   primary key (TOU_UNAME, TOURAD_ID, TOURGUIDETOURPIC_ID)
+   primary key (TOURAD_ID, TOURGUIDETOURPIC_ID)
 );
 
 /*==============================================================*/
@@ -302,11 +300,11 @@ create table TOURGUIDESELFTOUR_PIC
 /*==============================================================*/
 create table TOURGUIDE_CHOOSE
 (
-   CHOOSE_ID            int not null,
    UNAME                varchar(50) not null,
+   CHOOSE_ID            int not null,
    CHOOSE_IS_POST       bool not null,
    CHOOSE_CREATEDTIME   datetime not null,
-   primary key (CHOOSE_ID)
+   primary key (UNAME, CHOOSE_ID)
 );
 
 /*==============================================================*/
@@ -327,14 +325,14 @@ create table TOURGUIDE_COMMENT
 /*==============================================================*/
 create table TOUR_AD
 (
-   TOU_UNAME            varchar(50) not null,
    TOURAD_ID            int not null,
    UNAME                varchar(50) not null,
    TOURPLAN_ID          int not null,
    TOURAD_PRICE         int not null,
    TOURAD_DESCRIPTION   varchar(200),
    TOURAD_PEOPLE_SCALE  int not null,
-   primary key (TOU_UNAME, TOURAD_ID)
+   TOURAD_NAME          varchar(100) not null,
+   primary key (TOURAD_ID)
 );
 
 /*==============================================================*/
@@ -343,10 +341,9 @@ create table TOUR_AD
 create table TOUR_APPLY
 (
    UNAME                varchar(50) not null,
-   USE_UNAME            varchar(50) not null,
    POST_ID              int not null,
    TOURAPPLY_PRICE      int not null,
-   primary key (USE_UNAME, UNAME, POST_ID)
+   primary key (UNAME, POST_ID)
 );
 
 /*==============================================================*/
@@ -354,13 +351,13 @@ create table TOUR_APPLY
 /*==============================================================*/
 create table TOUR_BUY
 (
-   CHOOSE_ID            int not null,
-   TOU_UNAME            varchar(50) not null,
    TOURAD_ID            int not null,
+   UNAME                varchar(50) not null,
+   CHOOSE_ID            int not null,
    TOURBUY_STARTDATE    date not null,
    TOURBUY_PEOPLE       int not null,
    TOURBUY_DONE         bool not null,
-   primary key (CHOOSE_ID)
+   primary key (UNAME, TOURAD_ID, CHOOSE_ID)
 );
 
 /*==============================================================*/
@@ -368,14 +365,15 @@ create table TOUR_BUY
 /*==============================================================*/
 create table TOUR_CONFIRM
 (
-   CHOOSE_ID            int not null,
    CONFIRM_ID           int not null,
+   UNAME                varchar(50) not null,
+   CHOOSE_ID            int not null,
    CONFIRM_PRICE_       int not null,
    CONFIRM_DATE         date not null,
    CONFIRM_PEOPLE       int not null,
    CONFIRM_             varchar(10) not null,
    CONFIRM_MEETING_Y    varchar(10) not null,
-   primary key (CHOOSE_ID, CONFIRM_ID)
+   primary key (CONFIRM_ID)
 );
 
 /*==============================================================*/
@@ -401,7 +399,6 @@ create table TOUR_PLAN
    TOURPLAN_ID          int not null,
    TOURPLAN_STARTTIME   time not null,
    TOURPLAN_DURATION    int not null,
-   SUPRISE_ME           bool not null,
    TOURPLAN_X           varchar(10) not null,
    TOURPLAN_Y           varchar(10) not null,
    primary key (UNAME, TOURPLAN_ID)
@@ -426,11 +423,11 @@ create table TOUR_PLAN_DETAIL
 /*==============================================================*/
 create table TOUR_START
 (
+   TOU_UNAME            varchar(50) not null,
    CHOOSE_ID            int not null,
-   USE_UNAME            varchar(50) not null,
    UNAME                varchar(50) not null,
    POST_ID              int not null,
-   primary key (CHOOSE_ID)
+   primary key (TOU_UNAME, CHOOSE_ID)
 );
 
 /*==============================================================*/
@@ -494,11 +491,11 @@ alter table SELLER add constraint FK_ISSELLER foreign key (UNAME)
 alter table TOUR add constraint FK_ATWHICHSTATE foreign key (STAGE)
       references STAGE (STAGE) on delete restrict on update restrict;
 
-alter table TOUR add constraint FK_RELATIONSHIP_36 foreign key (CHOOSE_ID, CONFIRM_ID)
-      references TOUR_CONFIRM (CHOOSE_ID, CONFIRM_ID) on delete restrict on update restrict;
+alter table TOUR add constraint FK_RELATIONSHIP_36 foreign key (CONFIRM_ID)
+      references TOUR_CONFIRM (CONFIRM_ID) on delete restrict on update restrict;
 
-alter table TOURGUIDESELFTOUR_PIC add constraint FK_ADHAVEPICS foreign key (TOU_UNAME, TOURAD_ID)
-      references TOUR_AD (TOU_UNAME, TOURAD_ID) on delete restrict on update restrict;
+alter table TOURGUIDESELFTOUR_PIC add constraint FK_ADHAVEPICS foreign key (TOURAD_ID)
+      references TOUR_AD (TOURAD_ID) on delete restrict on update restrict;
 
 alter table TOURGUIDE_CHOOSE add constraint FK_RELATIONSHIP_31 foreign key (UNAME)
       references USER (UNAME) on delete restrict on update restrict;
@@ -506,26 +503,23 @@ alter table TOURGUIDE_CHOOSE add constraint FK_RELATIONSHIP_31 foreign key (UNAM
 alter table TOURGUIDE_COMMENT add constraint FK_COMMENTONTOUR foreign key (TOUR_ID)
       references TOUR (TOUR_ID) on delete restrict on update restrict;
 
-alter table TOUR_AD add constraint FK_ADVERTISETOUR foreign key (TOU_UNAME)
-      references TOUR_GUIDE (UNAME) on delete restrict on update restrict;
-
 alter table TOUR_AD add constraint FK_TOURBEHIND foreign key (UNAME, TOURPLAN_ID)
       references TOUR_PLAN (UNAME, TOURPLAN_ID) on delete restrict on update restrict;
 
 alter table TOUR_APPLY add constraint FK_APPLYTOUSERTOUR foreign key (UNAME)
       references TOUR_GUIDE (UNAME) on delete restrict on update restrict;
 
-alter table TOUR_APPLY add constraint FK_APPLYWHICHTOUR foreign key (USE_UNAME, POST_ID)
-      references POST (USE_UNAME, POST_ID) on delete restrict on update restrict;
+alter table TOUR_APPLY add constraint FK_APPLYWHICHTOUR foreign key (POST_ID)
+      references POST (POST_ID) on delete restrict on update restrict;
 
-alter table TOUR_BUY add constraint FK_BUYFROM foreign key (TOU_UNAME, TOURAD_ID)
-      references TOUR_AD (TOU_UNAME, TOURAD_ID) on delete restrict on update restrict;
+alter table TOUR_BUY add constraint FK_BUYFROM foreign key (TOURAD_ID)
+      references TOUR_AD (TOURAD_ID) on delete restrict on update restrict;
 
-alter table TOUR_BUY add constraint FK_RELATIONSHIP_32 foreign key (CHOOSE_ID)
-      references TOURGUIDE_CHOOSE (CHOOSE_ID) on delete restrict on update restrict;
+alter table TOUR_BUY add constraint FK_RELATIONSHIP_32 foreign key (UNAME, CHOOSE_ID)
+      references TOURGUIDE_CHOOSE (UNAME, CHOOSE_ID) on delete restrict on update restrict;
 
-alter table TOUR_CONFIRM add constraint FK_RELATIONSHIP_34 foreign key (CHOOSE_ID)
-      references TOURGUIDE_CHOOSE (CHOOSE_ID) on delete restrict on update restrict;
+alter table TOUR_CONFIRM add constraint FK_RELATIONSHIP_34 foreign key (UNAME, CHOOSE_ID)
+      references TOURGUIDE_CHOOSE (UNAME, CHOOSE_ID) on delete restrict on update restrict;
 
 alter table TOUR_GUIDE add constraint FK_ISTOURGUIDE foreign key (UNAME)
       references ACCOUNT (UNAME) on delete restrict on update restrict;
@@ -539,11 +533,11 @@ alter table TOUR_PLAN_DETAIL add constraint FK_TOURDETAIL foreign key (UNAME, TO
 alter table TOUR_PLAN_DETAIL add constraint FK_TOURONLOCATION foreign key (LOCATION_ID)
       references LOCATION (LOCATION_ID) on delete restrict on update restrict;
 
-alter table TOUR_START add constraint FK_RELATIONSHIP_33 foreign key (CHOOSE_ID)
-      references TOURGUIDE_CHOOSE (CHOOSE_ID) on delete restrict on update restrict;
+alter table TOUR_START add constraint FK_RELATIONSHIP_33 foreign key (TOU_UNAME, CHOOSE_ID)
+      references TOURGUIDE_CHOOSE (UNAME, CHOOSE_ID) on delete restrict on update restrict;
 
-alter table TOUR_START add constraint FK_RELATIONSHIP_35 foreign key (USE_UNAME, UNAME, POST_ID)
-      references TOUR_APPLY (USE_UNAME, UNAME, POST_ID) on delete restrict on update restrict;
+alter table TOUR_START add constraint FK_RELATIONSHIP_35 foreign key (UNAME, POST_ID)
+      references TOUR_APPLY (UNAME, POST_ID) on delete restrict on update restrict;
 
 alter table USER add constraint FK_ISUSER foreign key (UNAME)
       references ACCOUNT (UNAME) on delete restrict on update restrict;

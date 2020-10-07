@@ -1,12 +1,14 @@
 import React , {Component} from 'react';
 import {SafeAreaView, Text, TouchableHighlight} from 'react-native';
 import LoginForm from '_molecules/LoginForm'
-import AsyncStorage from '@react-native-community/async-storage';
-
+// import AsyncStorage from '@react-native-community/async-storage';
+import store from '_redux/store.js'
 class LoginScreen extends Component {
   constructor(props) {
     super(props)
-    AsyncStorage.getItem('@username') && this.props.navigation.navigate('Home')
+    // AsyncStorage.getItem('username') && this.props.navigation.navigate('Home')
+    // console.log(store.getState())
+    store.getState().authen.loggedIn && this.props.navigation.navigate('Home')
   }
   navigation = this.props.navigation
   render() {
@@ -28,4 +30,5 @@ class LoginScreen extends Component {
   }
 }
 
-export default LoginScreen
+
+export default (LoginScreen)

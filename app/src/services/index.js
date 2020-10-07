@@ -1,5 +1,5 @@
 const config = {
-    host:'http://192.168.0.105/NghienCuuKhoaHoc/'
+    host:'localhost/NghienCuuKhoaHoc/'
 }
 
 export default function post(route,data) {
