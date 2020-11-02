@@ -1,18 +1,29 @@
 import {createBottomTabNavigator} from 'react-navigation-tabs'
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+
 import React from 'react'
-import HomeScreen from '_scenes/home';
+import HomeScreen from '_scenes/home'
 import CreateTour from '_scenes/user-tour'
 import UserNotification from '_scenes/user-noti'
+import AccountManagement from '_scenes/account'
 import Icon from './components/Icon'
 import BottomTabBar from './components/BottomTabBar'
 
+// const TabNavigatorConfig = {
+//   initialRouteName: 'Home',
+//   defaultNavigationOptions: {
+//     tabBarIcon: props => (<Icon {...props}/>)
+//   },
+//   tabBarComponent:props=>(<BottomTabBar {...props}/>)
+// };
 const TabNavigatorConfig = {
-  initialRouteName: 'Home',
-  defaultNavigationOptions: {
-    tabBarIcon: props => (<Icon {...props}/>)
-  },
-  tabBarComponent:props=>(<BottomTabBar {...props}/>)
-};
+    initialRouteName: 'Home',
+    activeColor: '#f0edf6',
+    inactiveColor: '#eb4034',
+    barStyle: { backgroundColor: '#694fad' },
+    labeled :true,
+    shifting:false
+  };
 
 const RouteConfigs = {
   Tour: {
@@ -31,9 +42,17 @@ const RouteConfigs = {
     //   ),
     //   tabBarBadge:3
     // }
+  },
+  Account: {
+    screen:AccountManagement,
+    navigationOptions: {
+      tabBarBadge:1,
+      tabBarColor:'#fcba03'
+    }
+    
   }
 };
 
-const AppNavigator = createBottomTabNavigator(RouteConfigs, TabNavigatorConfig);
+const AppNavigator = createMaterialBottomTabNavigator(RouteConfigs, TabNavigatorConfig)
 
-export default AppNavigator;
+export default AppNavigator

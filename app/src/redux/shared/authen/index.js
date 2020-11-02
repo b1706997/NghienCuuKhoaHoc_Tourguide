@@ -1,21 +1,47 @@
 // LOGIN REDUCER
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice,createAsyncThunk} from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-community/async-storage';
+
+
+// First, create the thunk
+export const initAction = createAsyncThunk(
+    'authen/initAction',
+    async () => {
+      const result =  await AsyncStorage.getItem('username')
+      return {username:result}
+    }
+  )
+
 
 export const authenSlice = createSlice({
     name:'authen',
     initialState: {
-        loggedIn:AsyncStorage.getItem('username')!=null?true:false,
-        userId:AsyncStorage.getItem('username'),
+        loggedIn:null,
+        username:""
     },
     reducers: {
-        login: (state,action) => {
+        loggedIn: (state,action) => {
             state.loggedIn = true
-            AsyncStorage.setItem('username',action.payload.username)
+            state.username = action.payload.username
+            // AsyncStorage.setItem('username',action.payload.username)
         },
-        logout:(state,action) => {
+        logout:(state) => {
+            // AsyncStorage.removeItem('username')
             state.loggedIn = false
         },
+    },
+    extraReducers: {
+        [initAction.fulfilled]: (state,action) => {
+            console.log('sad')
+            if(action.payload.username!=null) {
+                state.loggedIn = true
+                state.username = action.payload.username
+            }
+            else
+            {
+                state.loggedIn = false
+            }
+        }
     }
 });
 

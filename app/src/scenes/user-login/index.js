@@ -1,14 +1,18 @@
-import React , {Component} from 'react';
+import React , {Component} from 'react'
+import {initAction} from '_redux/shared/authen'
 import {SafeAreaView, Text, TouchableHighlight} from 'react-native';
-import LoginForm from '_molecules/LoginForm'
-// import AsyncStorage from '@react-native-community/async-storage';
-import store from '_redux/store.js'
+import propTypes from 'prop-types'
+import LoginForm from './components/LoginForm'
+import stateToPropHOC from '_redux/components/stateToProp';
+
 class LoginScreen extends Component {
   constructor(props) {
     super(props)
-    // AsyncStorage.getItem('username') && this.props.navigation.navigate('Home')
-    // console.log(store.getState())
-    store.getState().authen.loggedIn && this.props.navigation.navigate('Home')
+    this.props.init()
+  }
+  componentDidUpdate(prevProp,prevState,snapshot) {
+    if(this.props.loggedIn)
+      this.props.navigation.navigate('Home')
   }
   navigation = this.props.navigation
   render() {
@@ -24,11 +28,24 @@ class LoginScreen extends Component {
      <TouchableHighlight onPress={() => this.navigation.navigate('Home')}>
        <Text>Go to home</Text>
      </TouchableHighlight>
-        <LoginForm/>
+        <LoginForm navigation={this.props.navigation}/>
       </SafeAreaView>
     )
   }
 }
 
+LoginScreen.propTypes = {
+  init:propTypes.func,
+  loggedIn:propTypes.bool
+}
 
-export default (LoginScreen)
+
+const mapDispatchtoProp  =  dispatch => {
+  return {
+    init:() => {
+      dispatch(initAction())
+    }
+  }
+}
+
+export default stateToPropHOC(["authen/loggedIn",'authen/username'])(mapDispatchtoProp)(LoginScreen)

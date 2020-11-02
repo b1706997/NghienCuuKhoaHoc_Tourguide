@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "proxy": "http://localhost:1337/NghienCuuKhoaHoc"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.0",
@@ -18,11 +19,13 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-navigation": "^6.9.1",
+    "react-native-paper": "^4.2.0",
     "react-native-reanimated": "^1.9.0",
     "react-native-screens": "^2.9.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.11.7",
     "react-navigation": "^4.4.0",
+    "react-navigation-material-bottom-tabs": "^2.3.2",
     "react-navigation-stack": "^1.10.3",
     "react-navigation-tabs": "^2.9.0",
     "react-redux": "^7.2.1",

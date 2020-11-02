@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Navigator from '_navigations';
-import {Provider} from 'react-redux';
+import {Provider, connect} from 'react-redux';
 import store from '_redux/store.js';
-export default function App() {
-  return (
-    <Provider store={store}>    
-      <Navigator/>
-    </Provider>
-  );
+import {initAction} from '_redux/shared/authen'
+
+export default class App extends Component {
+  render() {
+    return(
+      <Provider store={store}>    
+        <Navigator/>
+      </Provider>
+    )
+  }
 }
 
 

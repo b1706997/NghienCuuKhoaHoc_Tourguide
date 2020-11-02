@@ -4,18 +4,10 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{0C9CA48E-B903-4A59-9C1B-8D7619263BC6}" Loaded="No" Name="NghienCuuKhoaHoc_CDM" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="NghienCuuKhoaHoc_CDM2.cdm"/>
-		<Model Expanded="Yes" ID="{62F86120-22FE-497E-843C-E5FAA92A3365}" Loaded="No" Name="UseCases" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="UseCases.oom"/>
-		<Model Expanded="Yes" ID="{31A13227-0B29-4D92-AEFE-7B0171B81214}" Loaded="No" Name="UseCase_Level0" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="UseCases2.oom"/>
-		<Model Expanded="Yes" ID="{3B0502CF-C1EB-4BEA-8331-F88B6A8C5AD8}" Loaded="No" Name="NghienCuuKhoaHoc_CDM" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="NghienCuuKhoaHoc_CDM.cdm"/>
-		<Model Expanded="Yes" ID="{0C9CA48E-B903-4A59-9C1B-8D7619263BC6}" Loaded="No" Name="NghienCuuKhoaHoc_CDM" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="NghienCuuKhoaHoc_CDM3.cdm"/>
-		<Model Expanded="Yes" ID="{0C9CA48E-B903-4A59-9C1B-8D7619263BC6}" Loaded="No" Name="NghienCuuKhoaHoc_CDM" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="NghienCuuKhoaHoc_CDM3.cdm"/>
-		<Model Expanded="Yes" ID="{0C9CA48E-B903-4A59-9C1B-8D7619263BC6}" Loaded="No" Name="NghienCuuKhoaHoc_CDM" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="NghienCuuKhoaHoc_CDM3.cdm"/>
-		<Model Expanded="Yes" ID="{0C9CA48E-B903-4A59-9C1B-8D7619263BC6}" Loaded="No" Name="NghienCuuKhoaHoc_CDM" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="NghienCuuKhoaHoc_CDM3.cdm"/>
-		<Model Expanded="Yes" ID="{0850923D-EA89-461E-B57C-F6A6E12195E5}" Loaded="No" Name="NCKH_DFD" Type="{3D3C409C-B60D-430E-A1C4-B880653AC634}" URL="NCKH_DFD.bpm"/>
-		<Model Expanded="Yes" ID="{0C9CA48E-B903-4A59-9C1B-8D7619263BC6}" Loaded="No" Name="NghienCuuKhoaHoc_CDM" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="NghienCuuKhoaHoc_CDM3.cdm"/>
-		<Model Expanded="Yes" ID="{0C9CA48E-B903-4A59-9C1B-8D7619263BC6}" Loaded="No" Name="NghienCuuKhoaHoc_CDM" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="heyitsmeurboi.cdm"/>
-		<Model Expanded="Yes" ID="{0C9CA48E-B903-4A59-9C1B-8D7619263BC6}" Name="NghienCuuKhoaHoc_CDM" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="heyitsmeurboi.cdm"/>
+		<Model Expanded="Yes" ID="{04F2A50A-A172-495D-9501-14D536B14A7D}" Loaded="No" Name="Webtech_Project_VGC" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="../../CongNgheWeb/Project/Design/Webtech_Project_VGC2.pdm"/>
+		<Model Expanded="Yes" ID="{791C93B4-904B-471C-9C6E-9FA6D8C2EC7E}" Loaded="No" Name="Webtech_Project_VGC" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="../../CongNgheWeb/Project/Design/Webtech_Project_VGC.cdm"/>
+		<Model Expanded="Yes" ID="{04F2A50A-A172-495D-9501-14D536B14A7D}" Loaded="No" Name="Webtech_Project_VGC" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="../../CongNgheWeb/Project/Design/Webtech_Project_VGC2.pdm"/>
+		<Model Expanded="Yes" ID="{04F2A50A-A172-495D-9501-14D536B14A7D}" Name="Webtech_Project_VGC" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="../../CongNgheWeb/Project/Design/Webtech_Project_VGC.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

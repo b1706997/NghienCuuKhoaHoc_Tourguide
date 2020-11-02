@@ -1,22 +1,34 @@
 const config = {
-    host:'localhost/NghienCuuKhoaHoc/'
+    host:'http://localhost:1337/NghienCuuKhoaHoc/'
 }
+// const config = {
+//     host:'https://frozen-harbor-17510.herokuapp.com/'
+// }
 
-export default function post(route,data) {
-    return fetch(config.host+route,{
+export async function post(route,data) {
+    let response = await fetch(config.host+route,{
         method:'POST',
-        header: {
-            'content-type':'application/json'
-        },
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          dataType: 'json',
+        // mode:'no-cors',
         body: JSON.stringify(data)
     })
-    .then((response) => response.json())
-    .then((responseJson) => {return responseJson})
-    .catch(function(error){
-        return null
-    });
-}
+    return response.json()
 
-export default function get(route) {
+    // fetch(config.host+route,{
+    //     method:'POST',
+    //     headers: {
+    //         Accept: 'application/json',
+    //         'Content-Type': 'application/json'
+    //       },
+    //       dataType: 'json',
+    //     mode:'no-cors',
+    //     body: JSON.stringify(data)
+    // }).then(response =>  return response)
+    
+
 
 }
